@@ -13,7 +13,7 @@ export const Categories = () => {
         </div>
         <div className="flex gap-5 justify-between py-5">
           <div className="relative w-1/3">
-            <Image src={img1} alt="ct" width={400} />
+            <Image src={img1} alt="ct" width={400} className="brightness-50 "/>
             <div className="absolute top-8  left-4">
               <h1 className="text-white font-medium text-[30px]">
                 Strawberry Cake
@@ -26,7 +26,7 @@ export const Categories = () => {
           </div>
 
           <div className="relative  w-1/3">
-            <Image src={img2} alt="ct" width={400} />
+            <Image src={img2} alt="ct" width={400} className="brightness-50 " />
             <div className="absolute top-8  left-4">
               <h1 className="text-white font-medium text-[30px]">
                 Strawberry Cake
@@ -39,7 +39,8 @@ export const Categories = () => {
           </div>
 
           <div className="relative  w-1/3">
-            <Image src={img1} alt="ct" width={400} />
+            <Image src={img1} alt="ct" width={400}
+            className="brightness-50 " />
             <div className="absolute top-8  left-4">
               <h1 className="text-white font-medium text-[30px]">
                 Strawberry Cake
