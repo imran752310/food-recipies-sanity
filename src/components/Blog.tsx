@@ -6,6 +6,7 @@ import { urlForImage } from '../../sanity/lib/image';
 import { BsHeart } from 'react-icons/bs';
 import Image from 'next/image';
 
+import b4 from '@/Assets/image/b4.jpg';
 
 const Blog = async () => {
   
@@ -15,7 +16,6 @@ const Blog = async () => {
           author->{bio,image,name}
        }`;
     
-       
   const posts: Post[] = await client.fetch(query);
   console.log(posts);
 
@@ -23,11 +23,11 @@ const Blog = async () => {
     <div className='container m-auto my-5'>
       
       {posts.map((post: Post) => (
-        <div key={post.slug} className='flex p-5'>
-          <div className='w-1/3 cover '>
+        <div key={post.slug} className='flex p-3'>
+          <div className='w-1/3 cover'>
           
             <Image
-              className=' w-70 h-70'
+              className=''
               src={urlForImage(post.image)}
               alt={post.title}
               width={300}
@@ -40,7 +40,7 @@ const Blog = async () => {
             <div className='flex mb-3 justify-between p-2'>
               <div className='flex gap-4'>
                 <div>
-                  <Image className='rounded-full w-full h-full cover-fill' src={urlForImage(post.author.image)}alt='Author' width={50} height={50} />
+                  <Image className='rounded-full w-full h-full cover-fill' src={b4} alt='Author' width={50} height={50} />
                 </div>
                 <div className='text-sm'>
                   <h1>{post.author.name}</h1>
@@ -58,7 +58,7 @@ const Blog = async () => {
             <p className='text-gray-600 text-sm'>{post.summary.slice(0,200)}</p><br />
 
             <Link
-              className='bg-green-500 hover:bg-green-600 text-white border-none p-2 my-6'
+              className='bg-green-500 text-white border-none p-2 my-6'
               href={`blog/${post.slug}`}
             >
               Read More

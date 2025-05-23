@@ -33,8 +33,8 @@ export default async function page({params:{slug}}:{params:{slug:string}}) {
 
 
   return (
-  <div className="border-t-2 border-gray-300">
-      <article className=" w-[80%] mx-auto   mt-12 mb-24 px-2 2xl:px-12 flex flex-col gap-y-8 ">
+  <div className="border-t-2">
+      <article className="mx-32 mt-12 mb-24 px-2 2xl:px-12 flex flex-col gap-y-8 ">
 
 {/* Blog Title */}
 <h1 className="text-xl xs:text-3xl lg:text-5xl font-bold text-dark dark:text-light">
