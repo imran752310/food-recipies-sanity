@@ -6,8 +6,10 @@ import RecipeGrid from "@/components/RecipeCard";
 
 export default async function Home() {
 
+
+  
   return (
-   <main>
+   <main >
     <Header />
     <Categories />
      <Blogsection />
