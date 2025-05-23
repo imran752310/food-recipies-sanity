@@ -1,21 +1,35 @@
-import React from 'react'
-import Image from 'next/image'
+import React from 'react';
+import Image from 'next/image';
 
-import banerImg from '@/Assets/image/bg4.jpg'
+import bannerImg from '@/Assets/image/bg4.jpg';
 
 export const Banner = () => {
   return (
-    <div className='relative my-20'>
-       <div className='relative'>
-            <Image className='w-full' src={banerImg}  alt=''/>
-       </div>
-        <div className='absolute top-[400px] text-white text-center mx-20'>
-            <h1 className='text-[72px] hover:text-green-400'>Gluten Free Receipies</h1>
-            <p className='mb-24'>Fusce nec ante vitae lacus aliquet vulputate. Donec scelerisque accumsan molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras sed accumsan neque. Ut vulputate, lectus vel aliquam congue, risus leo elementum nibh</p>
+    <section className="relative w-full h-[90vh] my-10">
+      <Image
+        src={bannerImg}
+        alt="Gluten Free Recipes Banner"
+        fill
+        priority
+        className="object-cover w-full h-full"
+      />
 
-            <button className='bg-green-600 text-white border-none p-5 my-4 hover:bg-green-700'>Discover all the receipies</button>
+      <div className="absolute inset-0 bg-black/60 flex items-center justify-center px-4 md:px-20">
+        <div className="text-center text-white max-w-4xl">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 hover:text-green-400 transition-all duration-300">
+            Gluten Free Recipes
+          </h1>
+          <p className="text-sm sm:text-base lg:text-lg mb-8">
+            Fusce nec ante vitae lacus aliquet vulputate. Donec scelerisque accumsan
+            molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+            posuere cubilia Curae; Cras sed accumsan neque. Ut vulputate, lectus vel
+            aliquam congue, risus leo elementum nibh.
+          </p>
+          <button className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded transition-all duration-300">
+            Discover all the recipes
+          </button>
         </div>
-
-    </div>
-  )
-}
+      </div>
+    </section>
+  );
+};

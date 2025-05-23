@@ -1,33 +1,28 @@
-import React from 'react';
-import { Post } from '../../typing';
-import { client } from '../../sanity/lib/client';
-import Link from 'next/link';
-import { urlForImage } from '../../sanity/lib/image';
-import { BsHeart } from 'react-icons/bs';
-import Image from 'next/image';
-
-import b4 from '@/Assets/image/b4.jpg';
+import React from "react";
+import { Post } from "../../typing";
+import { client } from "../../sanity/lib/client";
+import Link from "next/link";
+import { urlForImage } from "../../sanity/lib/image";
+import { BsHeart } from "react-icons/bs";
+import Image from "next/image";
 
 const Blog = async () => {
-  
   const query = `*[_type=='post'][0...3] {
          summary, title, image,
          "slug":slug.current,
           author->{bio,image,name}
        }`;
-    
+
   const posts: Post[] = await client.fetch(query);
   console.log(posts);
 
   return (
-    <div className='container m-auto my-5'>
-      
+    <div className="container m-auto my-5">
       {posts.map((post: Post) => (
-        <div key={post.slug} className='flex p-3'>
-          <div className='w-1/3 cover'>
-          
+        <div key={post.slug} className="flex p-5">
+          <div className="w-1/3 cover ">
             <Image
-              className=''
+              className=" w-70 h-70"
               src={urlForImage(post.image)}
               alt={post.title}
               width={300}
@@ -35,30 +30,39 @@ const Blog = async () => {
             />
           </div>
 
-          <div className='ml-6 w-2/3'>
+          <div className="ml-6 w-2/3">
             {/* Author */}
-            <div className='flex mb-3 justify-between p-2'>
-              <div className='flex gap-4'>
+            <div className="flex mb-3 justify-between p-2">
+              <div className="flex gap-4">
                 <div>
-                  <Image className='rounded-full w-full h-full cover-fill' src={b4} alt='Author' width={50} height={50} />
+                  <Image
+                    className="rounded-full w-full h-full cover-fill"
+                    src={urlForImage(post.author.image)}
+                    alt="Author"
+                    width={50}
+                    height={50}
+                  />
                 </div>
-                <div className='text-sm'>
+                <div className="text-sm">
                   <h1>{post.author.name}</h1>
                   <i>{post.author.bio}</i>
                 </div>
               </div>
               <div>
-                <i className='bg-pink-600 rounded w-3 h-3'>
+                <i className="bg-pink-600 rounded w-3 h-3">
                   <BsHeart />
                 </i>
               </div>
             </div>
 
-            <h1 className='text-lg font-medium mb-2'>{post.title}</h1>
-            <p className='text-gray-600 text-sm'>{post.summary.slice(0,200)}</p><br />
+            <h1 className="text-lg font-medium mb-2">{post.title}</h1>
+            <p className="text-gray-600 text-sm">
+              {post.summary.slice(0, 200)}
+            </p>
+            <br />
 
             <Link
-              className='bg-green-500 text-white border-none p-2 my-6'
+              className="bg-green-500 hover:bg-green-600 text-white border-none p-2 my-6"
               href={`blog/${post.slug}`}
             >
               Read More
@@ -71,8 +75,6 @@ const Blog = async () => {
 };
 
 export default Blog;
-
-
 
 // import React from 'react'
 // import { Post } from '../../typing';
@@ -87,16 +89,15 @@ export default Blog;
 // import b3 from '@/Assets/image/b3.jpg'
 
 // export default Blog = async () => {
-  
+
 //   const query = `*[_type=='post'] {
 //          summary,title,image,
 //            "slug":slug.current
 //        }`;
-    
-//       const posts:Post[] = await client.fetch(query);
-    
-//       console.log(posts);
 
+//       const posts:Post[] = await client.fetch(query);
+
+//       console.log(posts);
 
 //   return (
 //     <div className='container m-auto'>
@@ -106,9 +107,9 @@ export default Blog;
 //                                <div className='w-1/3'>
 //                                  <Image className='' src={urlForImage(posts.image)} alt='b' width={300} height={300} />
 //                                    </div>
-              
+
 //                                    <div className='ml-6 w-2/3'>
-              
+
 //                                     {/* Author */}
 //                                        <div className='flex mb-3 justify-between p-2'>
 //                                            <div className='flex gap-4'>
@@ -120,28 +121,23 @@ export default Blog;
 //                                                    <i>01/02/2024</i>
 //                                                </div>
 //                                            </div>
-              
+
 //                                            <div>
 //                                                <i className='bg-pink-600 rounded w-3 h-3'><BsHeart /> </i>
 //                                            </div>
 //                                        </div>
-              
-              
+
 //                                        <h1 className='text-lg font-medium mb-2'>{posts.title}</h1>
 //                                        <p className='text-gray-600 text-sm'>{posts.summary}</p><br />
-              
-//                                        <Link 
+
+//                                        <Link
 //                               className='bg-green-500 text-white border-none p-2 my-6' href={`blog/${posts.slug}`}>Read More</Link>
 //                                   </div>
-              
+
 //                                 </div>
 //              )
 //              )
 //              }
-
-
-
-
 
 // {/* // import React from 'react'
 // // import Image from 'next/image'
@@ -174,8 +170,6 @@ export default Blog;
 
 // //   console.log(posts);
 
-
-
 // //   return (
 // //     <div className='container m-auto'>
 
@@ -186,8 +180,7 @@ export default Blog;
 // //             {/* post start */}
 // //         {
 // //             posts.map((posts:Post)=>(
-                   
-         
+
 // //                   <div className='flex p-3'>
 // //                     <div className='w-1/3'>
 // //                     <Image className='' src={urlForImage(posts.image)} alt='b' width={300} height={300} />
@@ -212,11 +205,10 @@ export default Blog;
 // //                             </div>
 // //                         </div>
 
-
 // //                         <h1 className='text-lg font-medium mb-2'>{posts.title}</h1>
 // //                         <p className='text-gray-600 text-sm'>{posts.summary}</p><br />
 
-// //                         <Link 
+// //                         <Link
 // //                 className='bg-green-500 text-white border-none p-2 my-6' href={`blog/${posts.slug}`}>Read More</Link>
 // //                     </div>
 
@@ -242,4 +234,3 @@ export default Blog;
 // // export default Blog
 
 //  */}
-
